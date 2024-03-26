@@ -51,12 +51,10 @@ function ExamDetails() {
 
 export default ExamDetails;
 
-{
-    /* <hr />
-                <button onClick={handleDisplayAnswers}>
-                    {!view ? "Show Answers" : "Hide Answers"}
-                </button>
-                <Await resolve={dataPromise.data}>
-                    {view && renderAnswers}
-                </Await> */
-}
+// <hr />
+// <button onClick={handleDisplayAnswers}>
+//     {!view ? "Show Answers" : "Hide Answers"}
+// </button>
+// <Await resolve={dataPromise.data}>
+//     {view && renderAnswers}
+// </Await>

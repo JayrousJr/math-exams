@@ -19,7 +19,7 @@
 
 import axios from "axios";
 
-const baseURL = "http://localhost:8000";
+const baseURL = "https://api.legolas.tech";
 
 // Creating an instance of axios
 const getAxiosUser = axios.create({

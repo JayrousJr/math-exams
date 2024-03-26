@@ -17,10 +17,11 @@ import Login, {
 import Signup, { action as signinAction } from "../pages/Signup";
 import Layout from "../components/Layout";
 import ExamDetails, { loader as examDetailLoader } from "../pages/ExamDetails";
+import Error from "../components/Error";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Layout />} errorElement={<Error />}>
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact" element={<Contact />} />
