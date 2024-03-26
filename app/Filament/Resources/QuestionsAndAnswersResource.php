@@ -78,8 +78,8 @@ class QuestionsAndAnswersResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('exam')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('exam')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('question_number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
