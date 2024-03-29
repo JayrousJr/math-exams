@@ -10,9 +10,9 @@ function Footer() {
             <div className="footer-main">
                 <img src={logo} alt="" className="footer-logo" />
                 <p className="footer-text">
-                    Two brothers from Chicago that are just trying to pay back
-                    their debt by helping others with their SEO, SEM, and
-                    Content Marketing needs.
+                    Doing Online Examinations especially of mathematics will
+                    help you buils the confidence to tackle various questions
+                    and make you ready for youe NECTA
                 </p>
                 <p className="footer-fineprint">&copy; {date} Mathematics </p>
             </div>

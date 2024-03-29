@@ -11,8 +11,8 @@ function MarkDown(props) {
                 enablePreview={true}
             />
 
-            {/* <MathTex classname="w-full border-4 border-sky-500 bg-sky-950 text-lg text-sky-100 my-10 p-6">
-                {math}
+            {/* <MathTex classname="w-full border-4 border-sky-500 bg-sky-950 text-lg text-sky-100 my-10 p-6 markdown">
+                {props.question}
             </MathTex> */}
             {/* <div dangerouslySetInnerHTML={{ __html: props.question }} /> */}
         </>

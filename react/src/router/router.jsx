@@ -7,9 +7,9 @@ import DefaultLayout from "../components/DefaultLayout";
 import Home from "../pages/Home";
 import Exams, { loader as examsLoader } from "../pages/Exams";
 import About from "../pages/About";
-import Contact from "../pages/Contact";
+import Contact, { action as contactAction } from "../pages/Contact";
 import NotFound from "../pages/NotFound";
-import GuestLayout /*{ loader as guestLoader }*/ from "../components/GuestLayout";
+import GuestLayout /*, { loader as guestLoader }*/ from "../components/GuestLayout";
 import Login, {
     action as loginAction,
     loader as loginLoader,
@@ -24,7 +24,11 @@ const router = createBrowserRouter(
             <Route path="/" element={<Layout />} errorElement={<Error />}>
                 <Route index element={<Home />} />
                 <Route path="about" element={<About />} />
-                <Route path="contact" element={<Contact />} />
+                <Route
+                    path="contact"
+                    element={<Contact />}
+                    action={contactAction}
+                />
                 <Route path="/" element={<DefaultLayout />}>
                     <Route
                         path="login"
@@ -38,11 +42,7 @@ const router = createBrowserRouter(
                         element={<Signup />}
                     />
                 </Route>
-                <Route
-                    path="/"
-                    element={<GuestLayout />}
-                    // loader={guestLoader}
-                >
+                <Route path="/" element={<GuestLayout />}>
                     <Route
                         path="exams"
                         loader={examsLoader}

@@ -20,6 +20,6 @@ Route::post('/logout', [Authcontroller::class, 'logout']);
 // Protected routes for the examinations
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/exams/id', [ExamsController::class, 'index']);
+    Route::get('/exams/{id}', [QuestionsController::class, 'show']);
     Route::get('/exams', [QuestionsController::class, 'index']);
 });

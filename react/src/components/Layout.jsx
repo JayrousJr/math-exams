@@ -25,10 +25,7 @@ function Layout() {
         response.body = true;
         throw response;
     };
-    if (user) {
-        const getname = user.name.split(" ");
-        const name = getname[0];
-    }
+
     return (
         <div className={`${darkMode ? "dark" : null}`}>
             <header>
@@ -71,7 +68,10 @@ function Layout() {
                         ) : (
                             <div className="user">
                                 <span className="user-name">
-                                    Hello <strong>{name}</strong>
+                                    Hello{" "}
+                                    <strong>
+                                        {user && user.name.split(" ")[0]}
+                                    </strong>
                                 </span>
                                 <Link
                                     className="account-btn"
@@ -94,8 +94,13 @@ function Layout() {
                         >
                             <RiCloseLine />
                         </button>
-                        <img className="site-logo" src={logo} />
+                        <img
+                            className="site-logo"
+                            src={logo}
+                            onClick={toggleNav}
+                        />
                         <NavLink
+                            onClick={toggleNav}
                             className={({ isActive }) =>
                                 isActive ? "nav-main-active" : null
                             }
@@ -105,6 +110,7 @@ function Layout() {
                         </NavLink>
 
                         <NavLink
+                            onClick={toggleNav}
                             className={({ isActive }) =>
                                 isActive ? "nav-main-active" : null
                             }
@@ -113,6 +119,7 @@ function Layout() {
                             About
                         </NavLink>
                         <NavLink
+                            onClick={toggleNav}
                             className={({ isActive }) =>
                                 isActive ? "nav-main-active" : null
                             }
@@ -122,6 +129,7 @@ function Layout() {
                         </NavLink>
                         {token && (
                             <NavLink
+                                onClick={toggleNav}
                                 className={({ isActive }) =>
                                     isActive ? "nav-main-active" : null
                                 }

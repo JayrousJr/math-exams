@@ -118,7 +118,58 @@ a {
 .new-account {
     margin: 0 2em;
 }
-/* Buttons */
+.not-found {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    min-height: 50vh;
+}
+
+.page-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dark .page-contents {
+    color: #fba834;
+}
+.sad-icon {
+    font-size: 3em;
+}
+.error-page {
+    background-color: #000e;
+    grid-template-areas: " . error error error .";
+    min-height: 100vh;
+}
+
+.error-container {
+    grid-area: error;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.error-name {
+    font-size: 1.7em;
+}
+.error-message {
+    color: #fff;
+    text-align: center;
+}
+.error-name {
+    color: #ebebeb;
+}
+.error-icon {
+    background-color: #fba834;
+    font-size: 5rem;
+}
+.error-status {
+    color: #fff;
+}
+.error-mesage {
+    color: #fff;
+}
+/* Buttons starts*/
 
 .btn-send {
     padding: 1em 2em;
@@ -141,14 +192,19 @@ a {
     border: none;
     background-color: #0c2d57;
     color: #ebebeb;
+    border-radius: 0.5em;
+    cursor: pointer;
+    padding: 1rem 1rem;
+    transition: 250ms;
 }
-/* Buttons */
+.btn-submit:hover {
+    background-color: #113b74;
+}
+/* Buttons ends*/
 .loader {
     color: #efecec;
 }
-.single-paper {
-    color: #50c4ed;
-}
+
 .account-btn {
     background-color: #0c2d57;
     padding: 0.3em 0.6em;
@@ -191,6 +247,7 @@ a {
 .error span {
     font-size: 1.3rem;
 }
+
 /* =================
 Main Layout
 ==================== */
@@ -612,7 +669,7 @@ EXAMS AND EXAMS DETAILS
 .exams {
     display: grid;
     grid-template-columns: minmax(1em, 1fr) minmax(0px, 500px) minmax(1em, 1fr);
-    grid-template-areas: ". header  ." ". paper  .";
+    grid-template-areas: ". header ." ". filter ." ". paper  .";
     min-height: 70vh;
     padding: 4em 0;
 }
@@ -623,13 +680,38 @@ EXAMS AND EXAMS DETAILS
 .exams-header {
     color: #000;
     padding-top: 1em;
-    grid-column: header;
+    grid-area: header;
+}
+.filter {
+    grid-area: filter;
+    /* margin: 1em; */
+}
+.filter-link {
+    font-weight: 600;
+    background-color: #fba834;
+    border-radius: 0.3em;
+    padding: 0.5em;
+    margin: 0.2em;
+    color: #0c2d57;
+    transition: 250ms;
+    border: none;
+}
+.filter-link:hover {
+    background-color: #fba834a1;
+}
+.selected {
+    background-color: #50c4ed;
+}
+.clear {
+    background-color: red;
+    color: #ebebeb;
 }
 .dark .exams-header {
     color: #ebebeb;
 }
 .dark .single-paper {
     color: #ebebeb;
+    border-bottom: 1px solid #fff;
 }
 .single-paper {
     color: #000;
@@ -637,6 +719,7 @@ EXAMS AND EXAMS DETAILS
     padding: 0.5em;
     transform: scale(1);
     transition: 250ms;
+    border-bottom: 1px solid #000;
 }
 .single-paper:hover {
     color: #50c4ed;
@@ -658,8 +741,9 @@ EXAMS AND EXAMS DETAILS
             );
         grid-template-areas:
             ". header header header ."
+            ". filter filter filter ."
             ". paper paper paper .";
-        min-height: 70vh;
+        min-height: 40vh;
     }
 }
 .exam-single {
@@ -667,12 +751,10 @@ EXAMS AND EXAMS DETAILS
     grid-template-columns: minmax(1em, 1fr) minmax(0px, 500px) minmax(1em, 1fr);
     grid-template-areas: ". header  ." ". question  .";
     padding: 2em 0;
-    min-height: 70vh;
+    min-height: 50vh;
 }
-.dark {
-    .exam-single {
-        color: #fff;
-    }
+.dark .exam-single {
+    color: #fff;
 }
 .exams-header {
     grid-area: header;
@@ -680,15 +762,11 @@ EXAMS AND EXAMS DETAILS
 .question-card {
     grid-column: question;
     padding: 1em 0;
-    padding: 1em;
-    margin: 1em;
     color: #ebebeb;
     border-radius: 1em;
-    /* box-shadow: 2px 2px 2px #0c2d57; */
 }
 .markdown {
     padding: 1em 0.5em;
-    /* height: 200px; */
     max-height: 200px;
     overflow-y: auto;
     margin: 0.5em 0;
@@ -738,6 +816,14 @@ EXAMS AND EXAMS DETAILS
     transition: 250ms;
     top: 0;
 }
+.page-contents {
+    grid-area: header;
+    margin-top: 2em;
+    letter-spacing: 0.3em;
+    justify-self: center;
+    grid-gap: 2em;
+}
+
 .loader {
     border: 0.5em solid #f3f3f3;
     border-radius: 50%;
@@ -766,6 +852,7 @@ LOGI AN SIGNUP
 
 .login-signup {
     padding: 4em 0;
+    min-height: 40vh;
     grid-template-areas:
         ". header ."
         ". form .";

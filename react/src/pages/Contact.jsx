@@ -1,4 +1,13 @@
+import { Form } from "react-router-dom";
 import feature from "../assets/features.png";
+export async function action({ request }) {
+    const formData = await request.formData();
+    const email = formData.get("email");
+    const message = formData.get("message");
+    const name = formData.get("name");
+    console.log(name, email, message);
+    return null;
+}
 function Contact() {
     function onchange(event) {
         event.preventDefault();
@@ -38,10 +47,11 @@ function Contact() {
                     </p>
                 </div>
             </div>
-            <div className="form animated">
-                <form action="" className="">
+            <div className="form ">
+                <Form method="POST">
                     <div className="form-group">
                         <input
+                            name="name"
                             type="text"
                             className="form-input"
                             onChange={onchange}
@@ -50,6 +60,7 @@ function Contact() {
                     </div>
                     <div className="form-group">
                         <input
+                            name="email"
                             type="email"
                             className="form-input"
                             onChange={onchange}
@@ -58,6 +69,7 @@ function Contact() {
                     </div>
                     <div className="form-group">
                         <textarea
+                            name="message"
                             rows="5"
                             type="text"
                             className="form-input"
@@ -66,9 +78,9 @@ function Contact() {
                         />
                     </div>
                     <div className="button-group">
-                        <button className="btn btn-sumbit">Send Message</button>
+                        <button className="btn-submit">Send Message</button>
                     </div>
-                </form>
+                </Form>
             </div>
         </div>
     );

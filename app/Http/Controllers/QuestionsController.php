@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Filament\Resources\ExaminationResource;
+use App\Http\Resources\ExamsResource;
 use App\Http\Resources\QuestionsResource;
 use App\Models\Examination;
+use App\Models\QuestionsAndAnswers;
 use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
@@ -22,7 +24,8 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $examId = Examination::
+
     }
 
     /**
@@ -30,7 +33,10 @@ class QuestionsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $examid = $id;
+        return ExamsResource::collection(
+            QuestionsAndAnswers::where('exam_id', $id)->get()
+        );
     }
 
     /**

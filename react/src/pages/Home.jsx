@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 function Home() {
+    const [searchparam, setSearchParams] = useSearchParams();
+    // console.log(searchparam.get("name"));
     return (
         <>
             <section className="hero main-grid">
