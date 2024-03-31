@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class QuestionsAndAnswers extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = ['questions', 'answers', 'exam', 'exam_id', 'question_number'];
+
+
+    public function questionRelation(): BelongsTo
+    {
+        return $this->belongsTo(Examination::class);
+    }
 }

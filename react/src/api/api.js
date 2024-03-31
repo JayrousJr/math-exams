@@ -20,7 +20,7 @@
 import axios from "axios";
 
 const baseURL = "https://api.legolas.tech";
-
+const baseURL2 = "http://localhost:8000";
 // Creating an instance of axios
 const getAxiosUser = axios.create({
     baseURL: `${baseURL}/api`,

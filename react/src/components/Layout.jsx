@@ -21,9 +21,10 @@ function Layout() {
     const handleLogout = () => {
         localStorage.removeItem("ACCESS_TOKEN");
         localStorage.removeItem("user");
-        const response = redirect("/home");
-        response.body = true;
-        throw response;
+        // const response = redirect("/home");
+        // response.body = true;
+        // throw response;
+        window.location.replace("/");
     };
 
     return (

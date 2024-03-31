@@ -22,7 +22,7 @@ export async function action({ request }) {
         // const response = redirect("/home");
         // response.body = true;
         // throw response;
-        window.location.reload();
+        window.location.replace("/");
     } catch (error) {
         const response = error.response;
         // if (response && response.status === 422) {

@@ -23,7 +23,7 @@ export async function action({ request }) {
         localStorage.setItem("ACCESS_TOKEN", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
         // return redirect("/");
-        window.location.reload();
+        window.location.replace("/");
     } catch (error) {
         const response = error.response;
         console.log();

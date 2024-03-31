@@ -1,17 +1,41 @@
-import { Form } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 import feature from "../assets/features.png";
+import getAxiosUser from "../api/api";
+import { useRef, useState, useEffect } from "react";
 export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get("email");
     const message = formData.get("message");
     const name = formData.get("name");
-    console.log(name, email, message);
+    // console.log(name, email, message);
+    const payload = {
+        email,
+        name,
+        message,
+    };
+    try {
+        const { data } = await getAxiosUser.post("message", payload);
+        return { ok: true };
+    } catch (error) {
+        return error;
+    }
     return null;
 }
 function Contact() {
-    function onchange(event) {
-        event.preventDefault();
-    }
+    const { state } = useNavigation();
+    const actionData = useActionData();
+
+    // Resetting form inputs after submission starts here
+    const form = useRef(null);
+    useEffect(() => {
+        if (actionData?.ok) {
+            form.current?.reset();
+        }
+    }, [actionData]);
+    console.log(actionData);
+    //   Resetting form input after submission ends here
+
+    const error = actionData?.response?.data?.errors;
     return (
         <div className="contact main-grid">
             <div className="section-header">
@@ -48,37 +72,57 @@ function Contact() {
                 </div>
             </div>
             <div className="form ">
-                <Form method="POST">
+                <Form method="POST" ref={form}>
+                    {state === "submitting" && (
+                        <span className="processing">Sending Message ... </span>
+                    )}
                     <div className="form-group">
                         <input
                             name="name"
                             type="text"
-                            className="form-input"
-                            onChange={onchange}
+                            className={`form-input ${
+                                error && error.name && "error-input"
+                            }`}
                             placeholder="Your full Name"
                         />
+                        <span className="inputs-errors">
+                            {error && error?.name}
+                        </span>
                     </div>
                     <div className="form-group">
                         <input
                             name="email"
                             type="email"
-                            className="form-input"
-                            onChange={onchange}
+                            className={`form-input ${
+                                error && error.email && "error-input"
+                            }`}
                             placeholder="Email Address"
                         />
+                        <span className="inputs-errors">
+                            {error && error?.email}
+                        </span>
                     </div>
                     <div className="form-group">
                         <textarea
                             name="message"
                             rows="5"
                             type="text"
-                            className="form-input"
-                            onChange={onchange}
+                            className={`form-input ${
+                                error && error.message && "error-input"
+                            }`}
                             placeholder="Your Message"
                         />
+                        <span className="inputs-errors">
+                            {error && error?.message}
+                        </span>
                     </div>
                     <div className="button-group">
-                        <button className="btn-submit">Send Message</button>
+                        <button
+                            className="btn-submit"
+                            disabled={state === "submitting"}
+                        >
+                            Send Message
+                        </button>
                     </div>
                 </Form>
             </div>

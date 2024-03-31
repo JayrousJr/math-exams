@@ -247,7 +247,17 @@ a {
 .error span {
     font-size: 1.3rem;
 }
-
+.inputs-errors {
+    display: block;
+    color: red;
+}
+.error-input {
+    background-color: rgb(250, 229, 229);
+    border: 1px solid red;
+}
+.processing {
+    color: green;
+}
 /* =================
 Main Layout
 ==================== */
@@ -621,6 +631,7 @@ Contact Us
 }
 .form-group {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 input,
