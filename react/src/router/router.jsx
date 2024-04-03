@@ -18,6 +18,7 @@ import Signup, { action as signinAction } from "../pages/Signup";
 import Layout from "../components/Layout";
 import ExamDetails, { loader as examDetailLoader } from "../pages/ExamDetails";
 import Error from "../components/Error";
+import Answers from "../pages/Answers";
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
@@ -49,9 +50,14 @@ const router = createBrowserRouter(
                         element={<Exams />}
                     />
                     <Route
-                        path="exams/:id"
+                        path="exams/:id/questions"
                         loader={examDetailLoader}
                         element={<ExamDetails />}
+                    />
+                    <Route
+                        path="exams/:id/answers"
+                        loader={examDetailLoader}
+                        element={<Answers />}
                     />
                 </Route>
                 <Route path="*" element={<NotFound />}>

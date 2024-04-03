@@ -8,6 +8,7 @@
 * {
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
+    /* font-family: "Text Me One", sans-serif; */
 }
 p,
 h1,
@@ -760,18 +761,32 @@ EXAMS AND EXAMS DETAILS
 .exam-single {
     display: grid;
     grid-template-columns: minmax(1em, 1fr) minmax(0px, 500px) minmax(1em, 1fr);
-    grid-template-areas: ". header  ." ". question  .";
+    grid-template-areas: ". header  ." ". question  ." ". btn .";
     padding: 2em 0;
     min-height: 50vh;
+}
+.answer-btn {
+    grid-column: 2/-2;
+    background-color: var(--main);
+    width: 15em;
+    padding: 0.5em;
+    border-radius: 0.6em;
+    text-align: center;
+    color: var(--body);
+    transition: 0.3s;
+}
+.answer-btn:hover {
+    background-color: #113b74;
 }
 .dark .exam-single {
     color: #fff;
 }
 .exams-header {
-    grid-area: header;
+    grid-column: 2/-2;
 }
 .question-card {
-    grid-column: question;
+    grid-column: 2/-2;
+    /* grid-area: question; */
     padding: 1em 0;
     color: #ebebeb;
     border-radius: 1em;

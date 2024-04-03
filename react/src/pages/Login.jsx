@@ -9,7 +9,7 @@ import {
 import getAxiosUser from "../api/api";
 export async function loader({ request }) {
     const url = new URL(request.url);
-    console.log(url.pathname);
+    // console.log(url.pathname);
 
     return null;
 }
@@ -22,11 +22,10 @@ export async function action({ request }) {
         const { data } = await getAxiosUser.post("/login", payload);
         localStorage.setItem("ACCESS_TOKEN", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        // return redirect("/");
         window.location.replace("/");
     } catch (error) {
         const response = error.response;
-        console.log();
+        console.log(error);
         if (response.status === 500) {
             return "There is a server error";
         }
@@ -38,6 +37,7 @@ export async function action({ request }) {
 function Login() {
     const { state } = useNavigation();
     const error = useActionData();
+    console.log(error);
     const mesg = useLocation(); //return message from Guestlayout
     // console.log(mesg);
     return (

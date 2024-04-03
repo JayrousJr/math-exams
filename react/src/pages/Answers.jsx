@@ -18,12 +18,11 @@ export async function loader({ params }) {
 }
 
 // Component Function
-function ExamDetails() {
+function Answers() {
     const location = useLocation();
     const search = location.state?.search || "";
     const type = location.state?.typeFilter || "All";
     const dataPromise = useLoaderData();
-    const [view, setView] = useState(true);
 
     const renderQuestions = (data) => {
         const numbers = data.data.data.length;
@@ -39,29 +38,22 @@ function ExamDetails() {
             ) : (
                 <>
                     <div className="exams-header">
-                        <Link to={`..${search}`} relative="path">
-                            <HiArrowNarrowLeft /> Back to {type} exams
+                        <Link to={`..${search}/questions`} relative="path">
+                            <HiArrowNarrowLeft /> Back to Questions
                         </Link>
-                        <h2>Questions</h2>
+                        <h2>Answers</h2>
                     </div>
-                    {data.data.data.map((question) => (
-                        <div className="question-card" key={question.answers}>
+                    {data.data.data.map((ans, index) => (
+                        <div className="question-card" key={ans.index}>
                             <div className="question-number">
-                                {question.question_number}
+                                Quetion {index + 1}
                             </div>
                             <MarkDown
-                                className="question"
-                                question={question.questions}
+                                className="answer-btn"
+                                question={ans.answers}
                             />
                         </div>
                     ))}
-                    <Link
-                        className="answer-btn"
-                        to="../answers"
-                        relative="path"
-                    >
-                        Go to answers
-                    </Link>
                 </>
             );
         return questionElement;
@@ -77,11 +69,4 @@ function ExamDetails() {
     );
 }
 
-export default ExamDetails;
-
-// <hr />
-{
-    /* <button onClick={handleDisplayAnswers}>
-    {!view ? "Show Answers" : "Hide Answers"}
-</button> */
-}
+export default Answers;

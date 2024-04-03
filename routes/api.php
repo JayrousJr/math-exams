@@ -22,7 +22,8 @@ Route::post('/message', [ContactController::class, 'store']);
 // Protected routes for the examinations
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/exams/{id}', [QuestionsController::class, 'show']);
+    Route::get('/exams/{id}/questions', [QuestionsController::class, 'show']);
+    Route::get('/exams/{id}/answers', [QuestionsController::class, 'show']);
     Route::get('/exams', [QuestionsController::class, 'index']);
     // Route::apiResource();
 });

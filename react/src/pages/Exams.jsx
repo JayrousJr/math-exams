@@ -37,11 +37,11 @@ function Exams() {
                   (exam) => exam.paper_type.toLowerCase() === typeFilter
               )
             : examsList;
-        const examelement = displayedExams.map((exam) => (
+        const examElement = displayedExams.map((exam) => (
             <Link
                 key={exam.name}
                 className="single-paper"
-                to={`${exam.id}`}
+                to={`${exam.id}/questions`}
                 state={{
                     typeFilter,
                     search: `?${searchparam.toString()}`,
@@ -94,7 +94,7 @@ function Exams() {
                         </button>
                     )}
                 </div>
-                {examelement}
+                {examElement}
             </>
         );
     }
