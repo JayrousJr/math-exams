@@ -30,7 +30,7 @@ function ExamDetails() {
         const questionElement =
             numbers < 1 ? (
                 <div className="page-contents">
-                    <Link to=".." relative="path">
+                    <Link to="/exams">
                         <HiArrowNarrowLeft /> Go Back
                     </Link>
                     <div className="question-number">No data found</div>
@@ -39,7 +39,7 @@ function ExamDetails() {
             ) : (
                 <>
                     <div className="exams-header">
-                        <Link to={`..${search}`} relative="path">
+                        <Link to={`/exams${search}`} relative="path">
                             <HiArrowNarrowLeft /> Back to {type} exams
                         </Link>
                         <h2>Questions</h2>
